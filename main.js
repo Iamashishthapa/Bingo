@@ -15,7 +15,7 @@ var maxValue=0;//in total
 function howMany()
 { 
     count = document.getElementById('loop').value;
-    for(var i=0; i<1 ;i++)
+    for(var i=0; i<2;i++)
         {
             Random();
             Random1();
@@ -69,12 +69,11 @@ function tables()
 
     for (var i=0; i<row ; i++)
         {
-            a=0;
             var tr = document.createElement('tr'); 
             for(var j=0; j<cols ; j++)
                 {
                     var td = document.createElement('td');
-                    if (a<=27)
+                    if (a<27)
                         { 
                             var text = document.createTextNode(finalArray[a]);
                         } 
@@ -84,6 +83,7 @@ function tables()
                 }
             table.appendChild(tr);
         }
+    a=0;
     var textnode =document.createTextNode("**");
     table.appendChild(textnode);
 }
@@ -125,68 +125,63 @@ function unique()
                 }
             count1++;
         }
-    // all1=0;
-    // for(i=0;i<5;i++){
-    // all1 = all1 + randomFive[i] + "<br>"; 
-    // }
-    // document.getElementById('gen5').innerHTML="Random 15 numbers :"+"<br>"+all1;
     if (count1==5)
     {
         total();    
-    } 
+    }
 }
 
 //Stores 15 numbers in table in random order.........
 function total()
-{ 
-    if(maxValue==0)
+{  
+    if(maxValue<27)
         {
-            a1=0;
-        }
-    else
-        {
-            a1=5*(maxValue/9);
-        }
-    for ( i=0; i<9; i++)
-        {
-            randomNine[i] = '*';
-        }
-    for ( i=0; i<5; i++)
-        {
-            var b=randomFive[i];
-            randomNine[b] = arr[a1];
-            var c = arr[a1];  
-            a1++;
-        }
-    all1=0;
-    for(i=0;i<9;i++)
-        {   
-            if(i==0)
+            if(maxValue==0)
                 {
-                    all1=randomNine[i]+"<br>";
+                    a1=0;
                 }
             else
                 {
-                    all1 = all1 + randomNine[i] + "<br>"; 
+                    a1=5*(maxValue/9);
                 }
-        }
-    document.getElementById('gen5').innerHTML="Random 15 numbers :"+"<br>"+all1;
-    if ( a1>=15)
-    {
-        a1 = 0;
-    }
-    for(var j = 0; j<9 ; j++ )
-        {
-            finalArray[maxValue] = randomNine[j]; 
-            maxValue ++ ;
-        }
-        if (maxValue<=27)
-        {
+            for ( i=0; i<9; i++)
+                {
+                    randomNine[i] = '*';
+                }
+            for ( i=0; i<5; i++)
+                {
+                    var b=randomFive[i];
+                    randomNine[b] = arr[a1];
+                    a1++;
+                }
+            all1=0;
+            for(i=0;i<9;i++)
+                {   
+                    if(i==0)
+                        {
+                            all1=randomNine[i]+"<br>";
+                        }
+                    else
+                        {
+                            all1 = all1 + randomNine[i] + "<br>"; 
+                        }
+                }
+            document.getElementById('gen5').innerHTML="Random 15 numbers :"+"<br>"+all1;
+            if (a1>=15)
+                {
+                    a1 = 0;
+                }
+            for(j=0;j<9;j++)
+                {
+                    finalArray[maxValue] = '*';
+                    finalArray[maxValue] = randomNine[j];
+                    maxValue++ ;
+                }
             generate();
         }
-        else{
+    else
+        {
             maxValue=0;
             console.log('finished');
         }
-
 }
