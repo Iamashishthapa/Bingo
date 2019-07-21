@@ -13,9 +13,9 @@ var maxValue=0;//in total
 //Calls table() function number of times...
 
 function howMany()
-{ 
-    count = document.getElementById('loop').value;
-    for(var i=0; i<2;i++)
+{  
+    var count = document.getElementById('loop').value;
+    for(var i=0; i<count;i++)
         {
             Random();
             Random1();
@@ -166,7 +166,6 @@ function total()
                             all1 = all1 + randomNine[i] + "<br>"; 
                         }
                 }
-            document.getElementById('gen5').innerHTML="Random 15 numbers :"+"<br>"+all1;
             if (a1>=15)
                 {
                     a1 = 0;
